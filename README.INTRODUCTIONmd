@@ -1,3 +1,44 @@
+1. INTRODUCTION
+   
+1.1 Overview of Payload
+There are various methods of transmitting messages via radio waves such as audio, text, images, and videos. Communication of such messages from satellite to ground forms a vital link for conveying the observations made by satellite payloads to the user of the payload. This document explains one such development where pre-recorded data is being transmitted from space to ground via text, audio, and images. The development further may aid the space community to develop a data transmitter for their satellites. 
+Proposed payload uses microcontroller as a baseband processor, RF transceiver as RF modulator/demodulator, flash memory as storage device, and R-2R ladder circuit as digital-to-analogue converter. Microcontroller converters information into audio via suitable protocol and will be sent to transceiver at desired sample-rate via R-2R DAC. The RF transceiver is analog FM transceiver which further FM modulates the audio and transmits via antenna.
+
+a. Audio
+Pre-recorded audio, such as greeting message, is sampled, quantized, and stored into the flash memory of the payload. These sampled are then rolled out to RF transceiver via R-2R DAC. 
+
+b. Text
+Text messages, such as greetings or even telemetry information about the payload, are transmitted using AX.25 frame format and AFSK modulation at baseband. These data handling functionalities are implemented by microcontroller. AX.25 (Amateur X.25) is a data link layer protocol originally derived from layer 2 of the X.25 protocol suite and designed for use by amateur radio operators, whereas AFSK modulation is audio frequency shift keying with 1200 Hz and 2200 Hz frequencies used to denote marks and spaces.
+
+c. Images
+Pre-recorded images, such as photos depicting certain events or images taken by on-board payload are transmitted to ground using slow scan television (SSTV) mode. An SSTV image is converted into audio by microcontroller using PD120 and Robot72 modes. These modes are known to amateur radio community. Moreover, these signals can be received and decoded by simple setup of VHF/UHF radio and SSTV decoder software in the laptop. In this mode, the pixel intensity of the image is converted into frequency and arranged with appropriate vertical and horizontal sync signals.
+
+1.2. Definitions, Acronyms and Abbreviations:
+APRS – Automatic Packet Reporting System
+SSTV – Slow Scan Tele-Vision
+AX.25 – Amateur X.25 Protocol
+VHF – Very high frequency (Here, 144 MHz to 146 MHz enabled for amateur radio operation)
+UHF – Ultra high frequency (Here, 434 MHz to 438 MHz enabled for amateur radio operation)
+DAC – Digital to Analogue Converter
+RF – Radio Frequency
+FM – Frequency Modulation
+PSLV - polar satellite launch vehicle
+POEM - PSLV orbital experimental module
+
+
+2. Overall Configurations
+2.1 Mission Requirements
+Multimode message transmitter payload shall store the messages of audio, text, and image format into flash memory, shall generate encoded audio as per standard baseband modulation formats, and shall transmit them over RF link. Details of the mission requirements are summarized as follows:
+
+A. Frequency of operation:	MHz	145.970 (Tentative, subject to EMI requirements of POEM)
+Transmit power:		2W
+FM Frequency deviation:		2500Hz
+RF Modulation:		FM
+Message types:		Audio, Text, Image
+Baseband Modulation: 	Audio - None, sampled and quantized audio
+	                    Text - AFSK modulation, AX.25 Frame Format
+	                     Image - SSTV PD120 and Robot72 Modes
+
 # BGS-ARPIT Payload
 AMATEUR SATELLITE FREQUENCY COORDINATION REQUEST INSTRUCTIONS AND APPLICATION FORM
 1.	Amateur-satellite service:  Amateur stations meet the requirements of the radio regulations , RR 1.56. and 1.57.
@@ -36,3 +77,14 @@ v.  If you need help understanding the requirements or completing the coordinati
 7.	Where to send your frequency coordination request.  Send frequency coordination requests to the IARU Satellite Advisor by e-mail to satcoord@iaru.org. You should get an acknowledgement that the request has been received within a week.
 
 8.	What will happen?  The IARU Satellite Advisor will make recommendations to the licensee concerning plans based upon all available information and advice from the Satellite Advisory Panel.  His goal is to help you and your project to succeed.  The current status of your request will be published through the link at http://www.amsat.org.uk/iaru.  When the process is complete, the licensee will receive a coordination letter with detailed information. Visit also http://www.iaru.org for information about the IARU and its activities.
+
+
+
+
+
+
+
+
+
+
+
